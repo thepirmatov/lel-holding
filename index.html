@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEL Holding</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a href="#top" class="logo">LEL <span>HOLDING</span></a>
+
+    <nav class="main-nav" id="main-nav">
+      <ul>
+        <li><a href="#top" data-i18n="nav.home">Anasayfa</a></li>
+        <li><a href="#about" data-i18n="nav.about">Hakkımızda</a></li>
+        <li><a href="#companies" data-i18n="nav.companies">Şirketlerimiz</a></li>
+        <li><a href="#request" data-i18n="nav.request">Teklif Al</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">İletişim</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <!-- Language switcher -->
+      <div class="lang-switcher" id="lang-switcher">
+        <button class="lang-current" id="lang-toggle" aria-haspopup="true" aria-expanded="false">
+          <span id="lang-current-label">TR</span>
+          <svg class="chev" width="10" height="6" viewBox="0 0 10 6"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        </button>
+        <ul class="lang-menu" id="lang-menu">
+          <li><button data-lang="tr">Türkçe</button></li>
+          <li><button data-lang="en">English</button></li>
+          <li><button data-lang="ru">Русский</button></li>
+          <li><button data-lang="ky">Кыргызча</button></li>
+        </ul>
+      </div>
+
+      <!-- Mobile menu toggle -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="top"></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-inner">
+    <p class="eyebrow" data-i18n="hero.eyebrow">LEL HOLDING</p>
+    <h1 data-i18n="hero.title">Tek Çatı Altında Güvenilir Hizmet</h1>
+    <p class="hero-sub" data-i18n="hero.subtitle">Danışmanlık, turizm, eğitim, konaklama ve daha fazlası — LEL Holding bünyesindeki şirketlerimizi keşfedin.</p>
+    <a href="#companies" class="btn btn-primary" data-i18n="hero.cta">Şirketlerimizi Görün</a>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="container about-inner">
+    <div class="about-text">
+      <p class="section-eyebrow" data-i18n="about.eyebrow">Hakkımızda</p>
+      <h2 data-i18n="about.title">LEL Holding Hakkında</h2>
+      <p data-i18n="about.body">
+        LEL Holding, farklı sektörlerde faaliyet gösteren şirketleri tek çatı altında
+        birleştiren güvenilir bir kuruluştur. [Buraya holding hakkında kısa bir açıklama
+        eklenecek.]
+      </p>
+      <div class="chairman-card">
+        <div class="chairman-avatar" aria-hidden="true"></div>
+        <div>
+          <p class="chairman-name">Ömer Özer Lel</p>
+          <p class="chairman-title" data-i18n="about.chairmanTitle">Yönetim Kurulu Başkanı</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-media" aria-hidden="true">
+      <div class="media-placeholder">
+        <span data-i18n="placeholder.photo">Fotoğraf / Video</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPANIES ============ -->
+<section class="companies" id="companies">
+  <div class="container">
+    <div class="section-heading">
+      <p class="section-eyebrow" data-i18n="companies.eyebrow">Şirketlerimiz</p>
+      <h2 data-i18n="companies.title">Bünyemizdeki Şirketler</h2>
+      <p class="section-sub" data-i18n="companies.subtitle">LEL Holding çatısı altındaki tüm şirketlerimize göz atın.</p>
+    </div>
+
+    <div class="company-grid" id="company-grid">
+      <!-- Company cards are rendered here by js/main.js from js/companies-data.js -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPANY DETAIL TEMPLATE (used by JS to render each card) ============ -->
+<template id="company-card-template">
+  <article class="company-card">
+    <div class="company-media">
+      <div class="media-placeholder small">
+        <span data-i18n="placeholder.photo">Fotoğraf / Video</span>
+      </div>
+      <span class="company-icon" aria-hidden="true"></span>
+    </div>
+    <div class="company-body">
+      <p class="company-category"></p>
+      <h3 class="company-name"></h3>
+      <p class="company-desc"></p>
+
+      <ul class="company-meta">
+        <li class="meta-address">
+          <span class="meta-icon" aria-hidden="true"></span>
+          <span class="meta-text"></span>
+        </li>
+        <li class="meta-phone">
+          <span class="meta-icon" aria-hidden="true"></span>
+          <a class="meta-link" href="#"></a>
+        </li>
+      </ul>
+
+      <div class="company-actions">
+        <a class="btn btn-small btn-whatsapp" href="#" target="_blank" rel="noopener">
+          <span data-i18n="card.whatsapp">WhatsApp</span>
+        </a>
+        <a class="btn btn-small btn-outline" href="#" target="_blank" rel="noopener">
+          <span data-i18n="card.map">2GIS'te Gör</span>
+        </a>
+      </div>
+
+      <div class="company-social">
+        <!-- social icon links injected by JS if present in data -->
+      </div>
+    </div>
+  </article>
+</template>
+
+<!-- ============ REQUEST / INQUIRY FORM ============
+     Static form — no backend/server code. Submissions are POSTed straight to
+     Formspree (https://formspree.io), which emails them to the LEL Holding
+     admin inbox configured on that form. Works on any static host.
+
+     TODO before launch: replace YOUR_FORM_ID below with the real Formspree
+     form id (sign up free at formspree.io, create a form, point it at the
+     admin's email address). See README.md for the exact steps. -->
+<section class="request" id="request">
+  <div class="container request-inner">
+    <div class="section-heading">
+      <p class="section-eyebrow" data-i18n="request.eyebrow">Teklif Al</p>
+      <h2 data-i18n="request.title">Bize Bir Mesaj Gönderin</h2>
+      <p class="section-sub" data-i18n="request.subtitle">Formu doldurun, ilgilendiğiniz hizmeti seçin, ekibimiz en kısa sürede size dönüş yapsın.</p>
+    </div>
+
+    <form class="request-form" id="request-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="field-name" data-i18n="request.nameLabel">Ad Soyad</label>
+          <input type="text" id="field-name" name="name" required>
+        </div>
+        <div class="form-field">
+          <label for="field-email" data-i18n="request.emailLabel">E-posta</label>
+          <input type="email" id="field-email" name="email" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="field-phone" data-i18n="request.phoneLabel">Telefon</label>
+          <input type="tel" id="field-phone" name="phone">
+        </div>
+        <div class="form-field">
+          <label for="field-service" data-i18n="request.serviceLabel">İlgilendiğiniz Hizmet</label>
+          <select id="field-service" name="service" required>
+            <option value="" disabled selected data-i18n="request.servicePlaceholder">Bir hizmet seçin</option>
+            <option value="general" data-i18n="request.serviceGeneral">Genel Bilgi Talebi</option>
+            <option value="Enes Danışmanlık Şirketi ve Yatırım Danışmanlığı">Enes Danışmanlık Şirketi ve Yatırım Danışmanlığı</option>
+            <option value="Info Group İstihdam Bürosu">Info Group İstihdam Bürosu</option>
+            <option value="Sky Turizm Acentası">Sky Turizm Acentası</option>
+            <option value="Info Group Dil ve Turizm Akademisi">Info Group Dil ve Turizm Akademisi</option>
+            <option value="Yeminli Tercümanlık Bürosu">Yeminli Tercümanlık Bürosu</option>
+            <option value="Techno Cave Capsule Hotel">Techno Cave Capsule Hotel</option>
+            <option value="Sky Aroma Cafe">Sky Aroma Cafe</option>
+            <option value="Ram Organizasyon">Ram Organizasyon</option>
+            <option value="Noter İşlemleri">Noter İşlemleri</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="field-message" data-i18n="request.messageLabel">Mesajınız</label>
+        <textarea id="field-message" name="message" rows="5" required></textarea>
+      </div>
+
+      <!-- honeypot field to cut down on spam bots; must stay hidden from real users -->
+      <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="form-footer">
+        <button type="submit" class="btn btn-primary" data-i18n="request.submit">Gönder</button>
+        <p class="form-note" id="form-note" data-i18n="request.note">Gönder'e tıkladığınızda talebiniz doğrudan LEL Holding ekibine e-posta ile iletilir.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="container contact-inner">
+    <div class="section-heading">
+      <p class="section-eyebrow" data-i18n="contact.eyebrow">İletişim</p>
+      <h2 data-i18n="contact.title">Bize Ulaşın</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <span class="meta-icon" aria-hidden="true"></span>
+        <p class="contact-label" data-i18n="contact.addressLabel">Adres</p>
+        <p class="contact-value" data-i18n="contact.addressValue">[Adres bilgisi eklenecek]</p>
+      </div>
+      <div class="contact-card">
+        <span class="meta-icon" aria-hidden="true"></span>
+        <p class="contact-label" data-i18n="contact.phoneLabel">Telefon</p>
+        <p class="contact-value">+996 700 694 045</p>
+      </div>
+      <div class="contact-card">
+        <span class="meta-icon" aria-hidden="true"></span>
+        <p class="contact-label" data-i18n="contact.whatsappLabel">WhatsApp</p>
+        <p class="contact-value">+996 700 694 045</p>
+      </div>
+    </div>
+
+    <div class="social-row" id="social-row">
+      <!-- global social links placeholder -->
+      <a href="#" class="social-icon" aria-label="Instagram">IG</a>
+      <a href="#" class="social-icon" aria-label="Facebook">FB</a>
+      <a href="#" class="social-icon" aria-label="WhatsApp">WA</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <a href="#top" class="logo">LEL <span>HOLDING</span></a>
+    <p class="footer-copy">&copy; <span id="year"></span> LEL Holding. <span data-i18n="footer.rights">Tüm hakları saklıdır.</span></p>
+  </div>
+</footer>
+
+<script src="js/translations.js"></script>
+<script src="js/companies-data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
