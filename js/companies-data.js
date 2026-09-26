@@ -45,13 +45,16 @@ const COMPANIES = [
   {
     id: "info-group-istihdam",
     icon: "users",
+    logo: "assets/images/info-group-istihdam/logo.jpg", // from @info_group_employment on Instagram
     name: "Info Group İstihdam Bürosu",
     phone: "+996 704 883 131",
     whatsapp: "996704883131",
-    address: null,
+    address: "Бульвар Эркиндик 23, 1 этаж, Первомайский район, Бишкек 720040",
+    // 2GIS listing photos here are all generic city/street shots, not the
+    // actual office — skipped rather than using misleading stock-looking media.
     media: [],
-    social: { instagram: null, facebook: null },
-    map2gis: "https://2gis.kg/bishkek/search/Info%20Group%20İstihdam",
+    social: { instagram: "https://www.instagram.com/info_group_employment", facebook: null },
+    map2gis: "https://2gis.kg/bishkek/geo/70000001059806035",
     category: {
       tr: "İstihdam Bürosu",
       en: "Employment Agency",
@@ -59,10 +62,10 @@ const COMPANIES = [
       ky: "Жумушка орноштуруу бюросу",
     },
     description: {
-      tr: "[Şirket açıklaması eklenecek]",
-      en: "[Company description to be added]",
-      ru: "[Описание компании будет добавлено]",
-      ky: "[Компания жөнүндө маалымат кийин кошулат]",
+      tr: "Info Group, Türkiye'de yasal olarak çalışmak isteyenler için resmi lisanslı (Lisans No. 000444) bir yurt dışı istihdam ajansıdır. Yüksek maaşlı pozisyonlar, gerçek uçuşlar ve vize desteği sunar. Bişkek'teki ofisi hafta içi hizmet vermektedir.",
+      en: "Info Group is an officially licensed (License No. 000444) recruitment agency helping people find legal employment in Turkey. They offer high-salary positions with real flights and visa support. Their Bishkek office serves clients on weekdays.",
+      ru: "Info Group — официально лицензированное (лицензия №000444) агентство по трудоустройству, помогающее найти легальную работу в Турции. Предлагает вакансии с высокой зарплатой, реальные вылеты и визовую поддержку. Офис в Бишкеке работает по будням.",
+      ky: "Info Group — Түркияда мыйзамдуу иштегиси келгендерге жардам берген расмий лицензияланган (№000444 лицензия) жумушка орноштуруу агенттиги. Жогорку эмгек акы, чыныгы учуулар жана виза колдоосун сунуштайт. Бишкектеги офиси жумуш күндөрү иштейт.",
     },
   },
   {
@@ -166,13 +169,21 @@ const COMPANIES = [
   {
     id: "sky-aroma-cafe",
     icon: "coffee",
+    logo: "assets/images/sky-aroma/logo.jpg", // from @skyaroma.kg on Instagram
     name: "Sky Aroma Cafe",
     phone: "+996 999 929 503",
     whatsapp: "996999929503",
-    address: null,
-    media: [],
-    social: { instagram: null, facebook: null },
-    map2gis: "https://2gis.kg/bishkek/search/Sky%20Aroma%20Cafe",
+    address: "Московская улица 91, 1 этаж, Первомайский район, Бишкек 720040",
+    // Pulled from the business's own 2GIS listing photo gallery.
+    media: [
+      { type: "image", src: "assets/images/sky-aroma/storefront.jpg" },
+      { type: "image", src: "assets/images/sky-aroma/interior.jpg" },
+      { type: "image", src: "assets/images/sky-aroma/patio-1.jpg" },
+      { type: "image", src: "assets/images/sky-aroma/veranda.jpg" },
+      { type: "image", src: "assets/images/sky-aroma/entrance.jpg" },
+    ],
+    social: { instagram: "https://www.instagram.com/skyaroma.kg", facebook: null },
+    map2gis: "https://2gis.kg/bishkek/geo/70000001117673814",
     category: {
       tr: "Kafe",
       en: "Café",
@@ -180,33 +191,41 @@ const COMPANIES = [
       ky: "Кафе",
     },
     description: {
-      tr: "[Şirket açıklaması eklenecek]",
-      en: "[Company description to be added]",
-      ru: "[Описание компании будет добавлено]",
-      ky: "[Компания жөнүндө маалымат кийин кошулат]",
+      tr: "Sky Aroma, Bişkek'te hem iç mekân hem de dış veranda oturma alanlarına sahip şık bir kafedir. Menüsünde kahve çeşitleri, soğuk kahveler, limonata, milkshake ve el yapımı tatlılar yer alır. Kafenin sloganı: \"Her fincanda bir hikâye.\"",
+      en: "Sky Aroma is a stylish café in Bishkek with both indoor seating and a covered outdoor veranda. The menu features coffee, cold brews, lemonades, milkshakes, and handmade desserts. As their motto goes: \"There's a story in every cup.\"",
+      ru: "Sky Aroma — уютная кофейня в Бишкеке с залом внутри и открытой верандой на улице. В меню — кофе, холодный кофе, лимонады, милкшейки и домашние десерты. Девиз кофейни: «В каждой чашке — своя история».",
+      ky: "Sky Aroma — Бишкектеги жайлуу кофейня, анда ичинде да, сыртындагы верандада да отурууга орун бар. Менюсунда кофе, муздак кофе, лимонад, милкшейк жана үй жасалган таттуулар бар. Кофейнянын девизи: «Ар бир чөйчөктө өз тарыхы бар».",
     },
   },
   {
     id: "ram-organizasyon",
-    icon: "calendar",
+    icon: "plane",
+    logo: "assets/images/ram-organizasyon/logo.jpg", // from @ram_organization on Instagram
     name: "Ram Organizasyon",
     phone: "+996 700 694 045",
     whatsapp: "996700694045",
-    address: null,
-    media: [],
-    social: { instagram: null, facebook: null },
-    map2gis: "https://2gis.kg/bishkek/search/Ram%20Organizasyon",
+    address: "Улица Ахматбека Суюмбаева 49а, 1 этаж 1 кабинет, Свердловский район, Бишкек 720011",
+    // Pulled from the business's own 2GIS listing photo gallery.
+    media: [
+      { type: "image", src: "assets/images/ram-organizasyon/storefront.jpg" },
+    ],
+    social: { instagram: "https://www.instagram.com/ram_organization", facebook: null },
+    map2gis: "https://2gis.kg/bishkek/geo/70000001094536667",
+    // NOTE: 2GIS and the business's own Instagram both list this as a foreign
+    // employment agency (placing workers in hotels in Turkey), not event
+    // organization — category/description below reflect that; the business
+    // card gave no category for this one, so "Organizasyon" was a guess.
     category: {
-      tr: "Organizasyon",
-      en: "Event Organization",
-      ru: "Организация мероприятий",
-      ky: "Иш-чараларды уюштуруу",
+      tr: "Yurt Dışı İstihdam",
+      en: "Overseas Employment Agency",
+      ru: "Агентство по трудоустройству за рубежом",
+      ky: "Чет өлкөдө жумушка орноштуруу",
     },
     description: {
-      tr: "[Şirket açıklaması eklenecek]",
-      en: "[Company description to be added]",
-      ru: "[Описание компании будет добавлено]",
-      ky: "[Компания жөнүндө маалымат кийин кошулат]",
+      tr: "Ram Organization, Türkiye'deki otellerde yasal olarak çalışmak isteyenler için yurt dışı istihdam hizmeti sunan bir ajanstır. Yüksek maaşlı pozisyonlar ve ücretsiz danışmanlık sağlar. Bişkek'teki ofisi hafta içi 09:00-18:00 saatleri arasında hizmet vermektedir.",
+      en: "Ram Organization is a recruitment agency that helps people find legal employment abroad, mainly in hotels in Turkey. They offer high-salary positions and free consultations. Their Bishkek office is open weekdays from 9:00 to 18:00.",
+      ru: "Ram Organization — агентство по трудоустройству за рубежом, специализирующееся на легальной работе в отелях Турции. Предлагает вакансии с высокой зарплатой и бесплатную консультацию. Офис в Бишкеке работает по будням с 9:00 до 18:00.",
+      ky: "Ram Organization — Түркиядагы мейманканаларда мыйзамдуу иштегиси келгендер үчүн чет өлкөдө жумушка орноштуруу боюнча агенттик. Жогорку эмгек акы менен камсыз кылат жана акысыз консультация берет. Бишкектеги офиси жумуш күндөрү саат 9:00дөн 18:00гө чейин иштейт.",
     },
   },
   {
