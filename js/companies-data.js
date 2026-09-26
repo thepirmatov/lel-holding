@@ -6,8 +6,11 @@
    listing links) before launch.
 
    icon: one of the keys defined in ICONS in js/main.js
-   image: path to a photo under assets/images/, or null to show a placeholder
-   video: a YouTube/Vimeo embed URL, or null
+   media: array of { type: "image"|"video", src }, rendered as an
+          auto-scrolling carousel on the card. Empty array shows a
+          placeholder. A single item shows statically (no carousel chrome).
+          Video src should be a direct file (mp4/webm), not a YouTube/Vimeo
+          page link — those need an <iframe> embed, which isn't wired up here.
    whatsapp: digits only, no "+", used to build a wa.me link
    map2gis: TODO — currently a 2GIS *search* link built from the company
             name; replace with the exact listing URL once available
@@ -21,8 +24,7 @@ const COMPANIES = [
     phone: "+996 700 694 045",
     whatsapp: "996700694045",
     address: null, // TODO: real address
-    image: null,   // TODO: real photo
-    video: null,   // TODO: optional video
+    media: [],     // TODO: real photos/videos
     social: { instagram: null, facebook: null }, // TODO
     map2gis: "https://2gis.kg/bishkek/search/Enes%20Danışmanlık",
     category: {
@@ -45,8 +47,7 @@ const COMPANIES = [
     phone: "+996 704 883 131",
     whatsapp: "996704883131",
     address: null,
-    image: null,
-    video: null,
+    media: [],
     social: { instagram: null, facebook: null },
     map2gis: "https://2gis.kg/bishkek/search/Info%20Group%20İstihdam",
     category: {
@@ -69,8 +70,7 @@ const COMPANIES = [
     phone: "+996 705 621 484",
     whatsapp: "996705621484",
     address: null,
-    image: null,
-    video: null,
+    media: [],
     social: { instagram: null, facebook: null },
     map2gis: "https://2gis.kg/bishkek/search/Sky%20Turizm",
     category: {
@@ -93,8 +93,7 @@ const COMPANIES = [
     phone: "+996 507 141 310",
     whatsapp: "996507141310",
     address: null,
-    image: null,
-    video: null,
+    media: [],
     social: { instagram: null, facebook: null },
     map2gis: "https://2gis.kg/bishkek/search/Info%20Group%20Akademi",
     category: {
@@ -117,8 +116,7 @@ const COMPANIES = [
     phone: "+996 997 440 044",
     whatsapp: "996997440044",
     address: null,
-    image: null,
-    video: null,
+    media: [],
     social: { instagram: null, facebook: null },
     map2gis: "https://2gis.kg/bishkek/search/Yeminli%20Tercümanlık",
     category: {
@@ -141,9 +139,13 @@ const COMPANIES = [
     phone: "+996 772 016 101",
     whatsapp: "996772016101",
     address: null,
-    image: null,
-    video: null,
-    social: { instagram: null, facebook: null },
+    // Pulled from the business's own public Instagram (@technocave.kg).
+    media: [
+      { type: "image", src: "assets/images/techno-cave/tc-1.jpg" },
+      { type: "image", src: "assets/images/techno-cave/tc-2.jpg" },
+      { type: "image", src: "assets/images/techno-cave/tc-3.jpg" },
+    ],
+    social: { instagram: "https://www.instagram.com/technocave.kg", facebook: null },
     map2gis: "https://2gis.kg/bishkek/search/Techno%20Cave%20Capsule%20Hotel",
     category: {
       tr: "Kapsül Otel",
@@ -165,8 +167,7 @@ const COMPANIES = [
     phone: "+996 999 929 503",
     whatsapp: "996999929503",
     address: null,
-    image: null,
-    video: null,
+    media: [],
     social: { instagram: null, facebook: null },
     map2gis: "https://2gis.kg/bishkek/search/Sky%20Aroma%20Cafe",
     category: {
@@ -189,8 +190,7 @@ const COMPANIES = [
     phone: "+996 700 694 045",
     whatsapp: "996700694045",
     address: null,
-    image: null,
-    video: null,
+    media: [],
     social: { instagram: null, facebook: null },
     map2gis: "https://2gis.kg/bishkek/search/Ram%20Organizasyon",
     category: {
@@ -213,8 +213,7 @@ const COMPANIES = [
     phone: "+996 700 694 045",
     whatsapp: "996700694045",
     address: null,
-    image: null,
-    video: null,
+    media: [],
     social: { instagram: null, facebook: null },
     map2gis: "https://2gis.kg/bishkek/search/Noter",
     category: {

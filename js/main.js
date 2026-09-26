@@ -68,6 +68,122 @@
     applyTranslations(lang);
   }
 
+  /* ---------- media carousel ----------
+     0 items -> placeholder. 1 item -> static, no chrome. 2+ -> auto-advancing
+     carousel with dots, paused on hover/touch and while the tab is hidden. */
+  const AUTO_ADVANCE_MS = 4000;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function buildCarousel(container, mediaList, label) {
+    if (!mediaList || mediaList.length === 0) {
+      const placeholder = document.createElement("div");
+      placeholder.className = "media-placeholder small";
+      placeholder.innerHTML = `<span data-i18n="placeholder.photo">${t("placeholder.photo", currentLang)}</span>`;
+      container.insertBefore(placeholder, container.firstChild);
+      return;
+    }
+
+    function makeSlideContent(item) {
+      if (item.type === "video") {
+        const video = document.createElement("video");
+        video.src = item.src;
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+        return video;
+      }
+      const img = document.createElement("img");
+      img.src = item.src;
+      img.alt = label || "";
+      img.loading = "lazy";
+      return img;
+    }
+
+    if (mediaList.length === 1) {
+      const single = document.createElement("div");
+      single.className = "carousel";
+      single.appendChild(makeSlideContent(mediaList[0]));
+      container.insertBefore(single, container.firstChild);
+      const v = single.querySelector("video");
+      if (v) v.play().catch(() => {});
+      return;
+    }
+
+    const carousel = document.createElement("div");
+    carousel.className = "carousel";
+
+    const track = document.createElement("div");
+    track.className = "carousel-track";
+    mediaList.forEach((item) => {
+      const slide = document.createElement("div");
+      slide.className = "carousel-slide";
+      slide.appendChild(makeSlideContent(item));
+      track.appendChild(slide);
+    });
+    carousel.appendChild(track);
+
+    const dotsWrap = document.createElement("div");
+    dotsWrap.className = "carousel-dots";
+    const dots = mediaList.map((_, i) => {
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "carousel-dot";
+      dot.setAttribute("aria-label", `${i + 1}/${mediaList.length}`);
+      dotsWrap.appendChild(dot);
+      return dot;
+    });
+    carousel.appendChild(dotsWrap);
+
+    container.insertBefore(carousel, container.firstChild);
+
+    let index = 0;
+    let timer = null;
+
+    function goTo(i) {
+      const prevVideo = track.children[index].querySelector("video");
+      if (prevVideo) prevVideo.pause();
+
+      index = (i + mediaList.length) % mediaList.length;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((d, di) => d.classList.toggle("active", di === index));
+
+      const nextVideo = track.children[index].querySelector("video");
+      if (nextVideo) {
+        nextVideo.currentTime = 0;
+        nextVideo.play().catch(() => {});
+      }
+    }
+
+    function startAuto() {
+      if (prefersReducedMotion) return;
+      stopAuto();
+      timer = setInterval(() => goTo(index + 1), AUTO_ADVANCE_MS);
+    }
+    function stopAuto() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        goTo(i);
+        startAuto();
+      });
+    });
+
+    carousel.addEventListener("mouseenter", stopAuto);
+    carousel.addEventListener("mouseleave", startAuto);
+    carousel.addEventListener("touchstart", stopAuto, { passive: true });
+    carousel.addEventListener("touchend", startAuto, { passive: true });
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) stopAuto();
+      else startAuto();
+    });
+
+    goTo(0);
+    startAuto();
+  }
+
   /* ---------- company cards ---------- */
   function renderCompanies() {
     const grid = document.getElementById("company-grid");
@@ -82,14 +198,9 @@
       // icon
       card.querySelector(".company-icon").innerHTML = ICONS[company.icon] || "";
 
-      // media placeholder (image support for later: if company.image is set, swap div for <img>)
+      // media carousel (or placeholder, if the company has no media yet)
       const mediaWrap = card.querySelector(".company-media");
-      if (company.image) {
-        const img = document.createElement("img");
-        img.src = company.image;
-        img.alt = company.name;
-        mediaWrap.querySelector(".media-placeholder").replaceWith(img);
-      }
+      buildCarousel(mediaWrap, company.media, company.name);
 
       // name (brand name, not translated)
       card.querySelector(".company-name").textContent = company.name;

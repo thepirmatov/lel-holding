@@ -12,11 +12,11 @@ index.html              markup for every section (header, hero, about,
 css/styles.css           all styling — black/gold theme, responsive
 js/translations.js       UI text for tr (default) / en / ru / ky
 js/companies-data.js     the 9 companies: name, phone, whatsapp, address,
-                         image, video, social links, 2GIS link, category
-                         and description per language
-js/main.js               renders company cards, language switching,
-                         mobile nav
-assets/images/           put company/holding photos here
+                         media (photos/videos), social links, 2GIS link,
+                         category and description per language
+js/main.js               renders company cards + auto-scrolling media
+                         carousels, language switching, mobile nav
+assets/images/           company/holding photos, one subfolder per company
 assets/icons/            (unused for now — icons are inline SVG in main.js)
 ```
 
@@ -24,9 +24,16 @@ assets/icons/            (unused for now — icons are inline SVG in main.js)
 
 1. **Company descriptions** — `js/companies-data.js`, `description.{tr,en,ru,ky}`
    for each company. Currently `[Şirket açıklaması eklenecek]` etc.
-2. **Company photos/videos** — set `image: "assets/images/xxx.jpg"` (drop the
-   file in `assets/images/`) and optionally `video: "https://..."` per
-   company in `js/companies-data.js`. Until set, a placeholder box shows.
+2. **Company photos/videos** — each company has a `media: []` array in
+   `js/companies-data.js`. Add entries like
+   `{ type: "image", src: "assets/images/xxx/1.jpg" }` (drop the file under
+   `assets/images/`) or `{ type: "video", src: "assets/images/xxx/clip.mp4" }`
+   — video needs a direct mp4/webm file, not a YouTube/Vimeo page link.
+   0 items shows a placeholder box, 1 item shows statically, 2+ renders as an
+   auto-advancing carousel with dots (pauses on hover/touch). Techno Cave
+   Capsule Hotel already has 3 real photos pulled from its public Instagram
+   (@technocave.kg) — send more/better photos directly when you have them,
+   since Instagram's own compression degrades quality a bit.
 3. **Addresses** — `address: null` per company → set to the real address
    string. Same for the holding's own address in `index.html`
    (`contact.addressValue` in `js/translations.js`, currently
