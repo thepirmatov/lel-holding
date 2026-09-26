@@ -157,10 +157,10 @@ const COMPANIES = [
       ky: "Капсула мейманканасы",
     },
     description: {
-      tr: "[Şirket açıklaması eklenecek]",
-      en: "[Company description to be added]",
-      ru: "[Описание компании будет добавлено]",
-      ky: "[Компания жөнүндө маалымат кийин кошулат]",
+      tr: "Techno Cave, Bişkek şehir merkezine yalnızca 10 dakika uzaklıkta konumlanan modern bir kapsül otel/hosteldir. Misafirlerine ücretsiz Wi-Fi, bir çalışma alanı ve ücretsiz otopark imkânı sunar. Kapsül fiyatları 1000 somdan başlamaktadır.",
+      en: "Techno Cave is a modern capsule hostel located just 10 minutes from the center of Bishkek. Guests enjoy free Wi-Fi, a dedicated work zone, and free parking. Capsules start from 1000 som per night.",
+      ru: "Techno Cave — современный капсульный хостел, расположенный всего в 10 минутах от центра Бишкека. Гостям доступны бесплатный Wi-Fi, рабочая зона и бесплатная парковка. Стоимость капсулы — от 1000 сом.",
+      ky: "Techno Cave — Бишкектин борборунан бар болгону 10 мүнөт алыстыкта жайгашкан заманбап капсулалык хостел. Конокторго акысыз Wi-Fi, жумуш зонасы жана акысыз унаа токтотуучу жай сунушталат. Капсуланын баасы 1000 сомдон башталат.",
     },
   },
   {

@@ -30,6 +30,14 @@
     phone: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 005 5L14 13l5 2v3a2 2 0 01-2 2C9.6 20 4 14.4 4 7a2 2 0 011-1z"/></svg>',
   };
 
+  /* small circular badges in .company-social — whatsapp is always shown,
+     others render only when the company has that link set */
+  const SOCIAL_ICONS = {
+    whatsapp: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.8 14.2c-.3.7-1.5 1.3-2.1 1.4-.5.1-1.2.2-3.6-.8-3-1.2-5-4.2-5.1-4.4-.1-.2-1.2-1.6-1.2-3s.8-2.1 1-2.4c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.4.2.5.7 1.7.8 1.9.1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.3.4-.1.7.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.6.3.1.5.1.7-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.7.8.2.1.4.2.4.3.1.2.1.7-.2 1.4z"/></svg>',
+    instagram: '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>',
+    facebook: '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M13.5 21.9v-8.4h2.8l.4-3.3h-3.2V8.1c0-1 .3-1.6 1.7-1.6h1.7V3.6c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.5H7.6v3.3h2.8v8.4h3.1z"/></svg>',
+  };
+
   let currentLang = localStorage.getItem("lel-lang") || DEFAULT_LANG;
   if (!SUPPORTED_LANGS.includes(currentLang)) currentLang = DEFAULT_LANG;
 
@@ -226,23 +234,22 @@
       phoneLink.textContent = company.phone;
       phoneLink.href = `tel:${company.phone.replace(/\s+/g, "")}`;
 
-      // actions: whatsapp + 2gis
-      const actions = card.querySelectorAll(".company-actions .btn");
-      const whatsappBtn = actions[0];
-      const mapBtn = actions[1];
-      whatsappBtn.href = `https://wa.me/${company.whatsapp}`;
-      mapBtn.href = company.map2gis;
+      // actions: 2gis
+      card.querySelector(".company-actions .btn").href = company.map2gis;
 
-      // social icons (only if present)
+      // social icons: whatsapp always, others (instagram, facebook, ...) if present
       const socialWrap = card.querySelector(".company-social");
+      const socialLinks = [{ platform: "whatsapp", url: `https://wa.me/${company.whatsapp}` }];
       Object.entries(company.social || {}).forEach(([platform, url]) => {
-        if (!url) return;
+        if (url) socialLinks.push({ platform, url });
+      });
+      socialLinks.forEach(({ platform, url }) => {
         const a = document.createElement("a");
         a.href = url;
         a.target = "_blank";
         a.rel = "noopener";
         a.setAttribute("aria-label", platform);
-        a.textContent = platform.slice(0, 2).toUpperCase();
+        a.innerHTML = SOCIAL_ICONS[platform] || "";
         socialWrap.appendChild(a);
       });
 
