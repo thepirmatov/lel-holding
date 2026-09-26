@@ -138,7 +138,7 @@ const COMPANIES = [
     name: "Techno Cave Capsule Hotel",
     phone: "+996 772 016 101",
     whatsapp: "996772016101",
-    address: null,
+    address: "Улица Касымалы Баялинова 66, Свердловский район, Бишкек 720033",
     // Pulled from the business's own public Instagram (@technocave.kg).
     media: [
       { type: "image", src: "assets/images/techno-cave/tc-1.jpg" },
@@ -146,7 +146,7 @@ const COMPANIES = [
       { type: "image", src: "assets/images/techno-cave/tc-3.jpg" },
     ],
     social: { instagram: "https://www.instagram.com/technocave.kg", facebook: null },
-    map2gis: "https://2gis.kg/bishkek/search/Techno%20Cave%20Capsule%20Hotel",
+    map2gis: "https://2gis.kg/bishkek/geo/70000001038374218",
     category: {
       tr: "Kapsül Otel",
       en: "Capsule Hotel",
