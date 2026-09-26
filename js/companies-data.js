@@ -6,6 +6,8 @@
    listing links) before launch.
 
    icon: one of the keys defined in ICONS in js/main.js
+   logo: optional path to the company's own logo image — if set, it replaces
+         the generic `icon` badge on the card
    media: array of { type: "image"|"video", src }, rendered as an
           auto-scrolling carousel on the card. Empty array shows a
           placeholder. A single item shows statically (no carousel chrome).
@@ -135,6 +137,7 @@ const COMPANIES = [
   {
     id: "techno-cave-hotel",
     icon: "hotel",
+    logo: "assets/images/techno-cave/logo.jpg", // from @technocave.kg on Instagram
     name: "Techno Cave Capsule Hotel",
     phone: "+996 772 016 101",
     whatsapp: "996772016101",

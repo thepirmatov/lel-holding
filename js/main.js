@@ -195,8 +195,16 @@
       const card = node.querySelector(".company-card");
       card.dataset.id = company.id;
 
-      // icon
-      card.querySelector(".company-icon").innerHTML = ICONS[company.icon] || "";
+      // icon badge — the company's own logo when set, else a generic icon
+      const iconEl = card.querySelector(".company-icon");
+      if (company.logo) {
+        const logoImg = document.createElement("img");
+        logoImg.src = company.logo;
+        logoImg.alt = `${company.name} logo`;
+        iconEl.appendChild(logoImg);
+      } else {
+        iconEl.innerHTML = ICONS[company.icon] || "";
+      }
 
       // media carousel (or placeholder, if the company has no media yet)
       const mediaWrap = card.querySelector(".company-media");
