@@ -71,13 +71,20 @@ const COMPANIES = [
   {
     id: "sky-turizm",
     icon: "plane",
+    logo: "assets/images/sky-turizm/logo.jpg", // from @sky.aviatravel on Instagram
     name: "Sky Turizm Acentası",
     phone: "+996 705 621 484",
     whatsapp: "996705621484",
-    address: null,
-    media: [],
-    social: { instagram: null, facebook: null },
-    map2gis: "https://2gis.kg/bishkek/search/Sky%20Turizm",
+    // Confirmed via 2GIS listing matched by this exact phone number —
+    // NOT Бульвар Эркиндик 23 (that address was corrected after checking).
+    address: "Московская улица 91, 1 этаж, Первомайский район, Бишкек 720040",
+    // Pulled from the business's own 2GIS listing photo gallery.
+    media: [
+      { type: "image", src: "assets/images/sky-turizm/storefront-1.jpg" },
+      { type: "image", src: "assets/images/sky-turizm/storefront-2.jpg" },
+    ],
+    social: { instagram: "https://www.instagram.com/sky.aviatravel", facebook: null },
+    map2gis: "https://2gis.kg/bishkek/geo/70000001019355255",
     category: {
       tr: "Turizm Acentası",
       en: "Travel Agency",
@@ -85,10 +92,10 @@ const COMPANIES = [
       ky: "Туристтик агенттик",
     },
     description: {
-      tr: "[Şirket açıklaması eklenecek]",
-      en: "[Company description to be added]",
-      ru: "[Описание компании будет добавлено]",
-      ky: "[Компания жөнүндө маалымат кийин кошулат]",
+      tr: "Sky Turizm Acentası, 19 yıldır Bişkek'te hizmet veren deneyimli bir seyahat acentasıdır. Uçak bileti satışı, tur paketleri, otel rezervasyonu ve vize danışmanlığı sunmaktadır. Her müşteriye kişisel bir yaklaşım benimser.",
+      en: "Sky Turizm Acentası is an experienced travel agency that has been serving Bishkek for 19 years. They offer flight ticket sales, tour packages, hotel bookings, and visa consulting. Every client gets an individual, personalized approach.",
+      ru: "Sky Turizm Acentası — опытное туристическое агентство, работающее в Бишкеке уже 19 лет. Предлагает продажу авиабилетов, туристические пакеты, бронирование отелей и визовые консультации. К каждому клиенту — индивидуальный подход.",
+      ky: "Sky Turizm Acentası — Бишкекте 19 жылдан бери иштеп келе жаткан тажрыйбалуу туристтик агенттик. Учак билеттерин сатуу, тур топтомдору, мейманкана брондоо жана виза боюнча консультация сунуштайт. Ар бир кардарга жекече мамиле кылат.",
     },
   },
   {
