@@ -57,10 +57,10 @@ const COMPANIES = [
     phone: "+996 704 883 131",
     whatsapp: "996704883131",
     address: "Бульвар Эркиндик 23, 1 этаж, Первомайский район, Бишкек 720040",
-    // Stock photo (generic advisory/consultation scene) — client will send a
+    // Stock photo (generic job-interview scene) — client will send a
     // better one of the actual office later.
     media: [
-      { type: "image", src: "assets/images/info-group-istihdam/stock-consulting.jpg" },
+      { type: "image", src: "assets/images/info-group-istihdam/stock-interview.jpg" },
     ],
     social: { instagram: "https://www.instagram.com/info_group_employment", facebook: null },
     map2gis: "https://2gis.kg/bishkek/geo/70000001059806035",
@@ -260,9 +260,9 @@ const COMPANIES = [
     whatsapp: "996700694045",
     // Co-located inside the Info Group office (same building, different service).
     address: "Бульвар Эркиндик 23, 1 этаж, Первомайский район, Бишкек 720040",
-    // Stock photo (generic document-signing scene).
+    // Stock photo (generic document-signing scene, landscape-cropped to fit the card).
     media: [
-      { type: "image", src: "assets/images/noter-islemleri/stock-signing.jpg" },
+      { type: "image", src: "assets/images/noter-islemleri/stock-signing-2.jpg" },
     ],
     social: { instagram: null, facebook: null },
     map2gis: "https://2gis.kg/bishkek/geo/70000001059806035",
